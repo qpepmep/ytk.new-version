@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЮТК — Юргинский технологический колледж</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Канвас для снега -->
+<canvas id="snow"></canvas>
+
+<!-- Канвас для следа за курсором -->
+<canvas id="cursorSnow"></canvas>
+
+<nav>
+    <div class="logo">ЮТК</div>
+    <div class="menu" id="menu">
+        <a href="#contacts">Контакты</a>
+        <a href="https://ytk-edu.ru/newrasp/cg.htm" class="schedule-link" target="_blank">
+            <i class="fas fa-calendar-alt"></i> Расписание
+        </a>
+    </div>
+    <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<header>
+    <h1 class="glitch" data-text="ЮТК">ЮТК</h1>
+    <p>Юргинский технологический колледж</p>
+    <div class="header-buttons">
+        <a href="#contacts" class="btn">Контакты</a>
+        <a href="https://ytk-edu.ru/newrasp/cg.htm" target="_blank" class="btn schedule-btn">
+            <i class="fas fa-calendar-alt"></i> Расписание
+        </a>
+    </div>
+</header>
+
+<section id="contacts" class="contacts-section">
+    <h2>Контакты</h2>
+    <div class="contacts-container">
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Адрес</h3>
+            <p>г. Юрга, ул. Заводская, дом 18</p>
+        </div>
+        
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+            </div>
+            <h3>Телефон</h3>
+            <p>+7 (384) 515-37-00</p>
+        </div>
+        
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email</h3>
+            <p>info@ytk-edu.ru</p>
+        </div>
+        
+        <div class="contact-card schedule-card" onclick="window.open('https://ytk-edu.ru/newrasp/cg.htm', '_blank')">
+            <div class="contact-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3>Расписание</h3>
+            <p>Нажмите для перехода</p>
+            <div class="schedule-hint">
+                <i class="fas fa-external-link-alt"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="map-container">
+        <iframe 
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A0c7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b&source=constructor" 
+            width="100%" 
+            height="400" 
+            frameborder="0"
+            style="border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
+        </iframe>
+    </div>
+</section>
+
+<section class="schedule-section">
+    <h2>Быстрый доступ к расписанию</h2>
+    <a href="https://ytk-edu.ru/newrasp/cg.htm" target="_blank" class="big-schedule-link">
+        <div class="schedule-content">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Расписание занятий</span>
+            <small>Нажмите для перехода</small>
+        </div>
+    </a>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h3>ЮТК</h3>
+            <p>Юргинский технологический колледж</p>
+        </div>
+        <div class="footer-contacts">
+            <p><i class="fas fa-map-marker-alt"></i> г. Юрга, ул. Заводская, 18</p>
+            <p><i class="fas fa-phone"></i> +7 (384) 515-37-00</p>
+            <p><i class="fas fa-envelope"></i> info@ytk-edu.ru</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 ЮТК — Все права защищены</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
