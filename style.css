@@ -792,3 +792,123 @@ footer {
         color: #40E0D0;
     }
 }
+
+/* Стили для функции копирования */
+.contact-card {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.copy-hint {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #40E0D0, #8A2BE2);
+    color: white;
+    padding: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: bottom 0.3s ease;
+    opacity: 0;
+    border-radius: 0 0 20px 20px;
+}
+
+.contact-card:hover .copy-hint {
+    bottom: 0;
+    opacity: 1;
+}
+
+.copy-hint i {
+    font-size: 1rem;
+}
+
+.copy-hint span {
+    font-size: 0.85rem;
+}
+
+/* Анимация успешного копирования */
+@keyframes copySuccess {
+    0% {
+        transform: scale(1);
+        background: rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        transform: scale(1.05);
+        background: rgba(64, 224, 208, 0.3);
+        border-color: #40E0D0;
+    }
+    100% {
+        transform: scale(1);
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.copy-success {
+    animation: copySuccess 0.5s ease;
+}
+
+/* Уведомление о копировании */
+.copy-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #40E0D0, #8A2BE2);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    z-index: 2000;
+    animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2s forwards;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .copy-hint span {
+        display: none;
+    }
+    
+    .copy-hint {
+        bottom: -30px;
+        padding: 5px;
+    }
+    
+    .copy-hint i {
+        font-size: 1.2rem;
+    }
+    
+    .copy-notification {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        width: auto;
+        text-align: center;
+        justify-content: center;
+    }
+}
