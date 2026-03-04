@@ -91,28 +91,40 @@
 <section id="contacts" class="contacts-section">
     <h2>Контакты</h2>
     <div class="contacts-container">
-        <div class="contact-card">
+        <div class="contact-card" onclick="copyToClipboard('г. Юрга, ул. Заводская, дом 18', 'Адрес')">
             <div class="contact-icon">
                 <i class="fas fa-map-marker-alt"></i>
             </div>
             <h3>Адрес</h3>
-            <p>г. Юрга, ул. Заводская, дом 18</p>
+            <p id="address-text">г. Юрга, ул. Заводская, дом 18</p>
+            <div class="copy-hint">
+                <i class="fas fa-copy"></i>
+                <span>Нажмите чтобы скопировать</span>
+            </div>
         </div>
         
-        <div class="contact-card">
+        <div class="contact-card" onclick="copyToClipboard('+7 (384) 515-37-00', 'Номер телефона')">
             <div class="contact-icon">
                 <i class="fas fa-phone"></i>
             </div>
             <h3>Телефон</h3>
-            <p>+7 (384) 515-37-00</p>
+            <p id="phone-text">+7 (384) 515-37-00</p>
+            <div class="copy-hint">
+                <i class="fas fa-copy"></i>
+                <span>Нажмите чтобы скопировать</span>
+            </div>
         </div>
         
-        <div class="contact-card">
+        <div class="contact-card" onclick="copyToClipboard('info@ytk-edu.ru', 'Email')">
             <div class="contact-icon">
                 <i class="fas fa-envelope"></i>
             </div>
             <h3>Email</h3>
-            <p>info@ytk-edu.ru</p>
+            <p id="email-text">info@ytk-edu.ru</p>
+            <div class="copy-hint">
+                <i class="fas fa-copy"></i>
+                <span>Нажмите чтобы скопировать</span>
+            </div>
         </div>
     </div>
     
