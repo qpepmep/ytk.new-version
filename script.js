@@ -1,3 +1,92 @@
+// Функция копирования текста в буфер обмена
+function copyToClipboard(text, type) {
+    // Используем современный API Clipboard
+    navigator.clipboard.writeText(text).then(() => {
+        // Показываем уведомление об успешном копировании
+        showCopyNotification(`${type} скопирован в буфер обмена!`);
+        
+        // Добавляем эффект на карточку
+        const activeCard = event.currentTarget;
+        activeCard.classList.add('copy-success');
+        
+        // Убираем эффект через секунду
+        setTimeout(() => {
+            activeCard.classList.remove('copy-success');
+        }, 500);
+        
+    }).catch(err => {
+        // Если API не работает, используем запасной метод
+        fallbackCopyText(text, type);
+    });
+}
+
+// Запасной метод копирования для старых браузеров
+function fallbackCopyText(text, type) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopyNotification(`${type} скопирован в буфер обмена!`);
+        
+        const activeCard = event.currentTarget;
+        activeCard.classList.add('copy-success');
+        
+        setTimeout(() => {
+            activeCard.classList.remove('copy-success');
+        }, 500);
+        
+    } catch (err) {
+        showCopyNotification('Не удалось скопировать', 'error');
+    }
+    
+    document.body.removeChild(textarea);
+}
+
+// Функция показа уведомления
+function showCopyNotification(message, type = 'success') {
+    // Удаляем предыдущее уведомление, если есть
+    const oldNotification = document.querySelector('.copy-notification');
+    if (oldNotification) {
+        oldNotification.remove();
+    }
+    
+    // Создаем новое уведомление
+    const notification = document.createElement('div');
+    notification.className = 'copy-notification';
+    notification.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+        <span>${message}</span>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Удаляем уведомление через 2.5 секунды
+    setTimeout(() => {
+        notification.remove();
+    }, 2500);
+}
+
+// Добавляем поддержку touch-событий для мобильных устройств
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.contact-card').forEach(card => {
+        card.addEventListener('touchstart', function(e) {
+            // Для мобильных устройств показываем подсказку дольше
+            this.classList.add('touch-active');
+        });
+        
+        card.addEventListener('touchend', function(e) {
+            setTimeout(() => {
+                this.classList.remove('touch-active');
+            }, 1000);
+        });
+    });
+});
+
 // Меню
 const burger = document.getElementById('burger');
 const menu = document.getElementById('menu');
