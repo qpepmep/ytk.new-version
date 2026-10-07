@@ -1,212 +1,65 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЮТК им. Павлючкова Г.А. — Юргинский технологический колледж</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мой сайт</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: system-ui, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+    line-height: 1.6;
+    padding: 2rem;
+  }
+  header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  main {
+    max-width: 640px;
+    margin: 2rem auto;
+  }
+  section {
+    background: #fff;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  }
+  h2 { margin-bottom: .5rem; color: #2c3e50; }
+  a { color: #3498db; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  footer {
+    text-align: center;
+    color: #888;
+    font-size: .9rem;
+    margin-top: 2rem;
+  }
+</style>
 </head>
 <body>
+  <header>
+    <h1>Мой сайт</h1>
+    <p>Немного стиля, но всё ещё легко</p>
+  </header>
 
-<!-- Канвас для снега -->
-<canvas id="snow"></canvas>
+  <main>
+    <section>
+      <h2>О сайте</h2>
+      <p>Это одностраничник с CSS, без JavaScript и внешних файлов.</p>
+    </section>
 
-<!-- Канвас для следа за курсором -->
-<canvas id="cursorSnow"></canvas>
+    <section>
+      <h2>Ссылки</h2>
+      <p>Например, <a href="https://example.com">example.com</a>.</p>
+    </section>
+  </main>
 
-<nav>
-    <div class="logo">ЮТК - 2026</div>
-    <div class="menu" id="menu">
-        <a href="#about">О колледже</a>
-        <a href="#news">Новости</a>
-        <a href="#contacts">Контакты</a>
-        <a href="#resources">Ресурсы</a>
-    </div>
-    <div class="burger" id="burger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</nav>
-
-<header>
-    <h1 class="glitch" data-text="ЮТК">ЮТК</h1>
-    <h2 class="subtitle">ИМ. ПАВЛЮЧКОВА Г.А.</h2>
-    <h3 class="subtitle">2026</h3>
-    <p class="full-name">ГОСУДАРСТВЕННОЕ ПРОФЕССИОНАЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ<br>
-    «ЮРГИНСКИЙ ТЕХНОЛОГИЧЕСКИЙ КОЛЛЕДЖ» ИМЕНИ ПАВЛЮЧКОВА ГЕННАДИЯ АНТОНОВИЧА</p>
-    <div class="header-buttons">
-        <a href="https://ytk-edu.ru/newrasp/cg.htm" target="_blank" class="btn schedule-btn">
-            <i class="fas fa-calendar-alt"></i> Расписание
-        </a>
-        <a href="https://ytk-edu.ru/newrasp/cg.htm" target="_blank" class="btn schedule-btn">
-            <i class="fas fa-calendar-alt"></i> Расписание (зеркало)
-        </a>
-    </div>
-</header>
-
-<section id="about" class="about-section">
-    <h2>О колледже</h2>
-    <div class="about-content">
-        <div class="about-text">
-            <p>Юргинский технологический колледж имени Павлючкова Геннадия Антоновича — современное образовательное учреждение, готовящее высококвалифицированных специалистов для различных отраслей промышленности и экономики региона.</p>
-            <p>Мы гордимся своей историей и традициями, постоянно развиваемся и внедряем инновационные образовательные технологии.</p>
-        </div>
-    </div>
-</section>
-
-<section id="news" class="news-section">
-    <h2>Новости</h2>
-    
-    <div class="news-coming-soon">
-        <div class="coming-soon-icon">
-            <i class="fas fa-tools"></i>
-        </div>
-        <h3>Временно не работают</h3>
-        <p>но мы уже занимаемся этой проблемой, ждите обновлений!</p>
-        <div class="progress-bar">
-            <div class="progress"></div>
-        </div>
-        <div class="updating-text">
-            <span>Н</span>
-            <span>Е</span>
-            <span>Т</span>
-            <span>У</span>
-            <span>&nbsp;</span>
-            <span>Н</span>
-            <span>О</span>
-            <span>В</span>
-            <span>О</span>
-            <span>С</span>
-            <span>Т</span>
-            <span>Е</span>
-            <span>Й</span>
-            <span>!</span>
-            <span>:(</span>
-        </div>
-    </div>
-</section>
-
-<section id="contacts" class="contacts-section">
-    <h2>Контакты</h2>
-    <div class="contacts-container">
-        <div class="contact-card" onclick="copyToClipboard('г. Юрга, ул. Заводская, дом 18', 'Адрес', this)">
-            <div class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <h3>Адрес</h3>
-            <p id="address-text">г. Юрга, ул. Заводская, дом 18</p>
-            <div class="copy-hint">
-                <i class="fas fa-copy"></i>
-                <span>Нажмите чтобы скопировать</span>
-            </div>
-        </div>
-        
-        <div class="contact-card" onclick="copyToClipboard('+7 (384) 515-37-00', 'Номер телефона', this)">
-            <div class="contact-icon">
-                <i class="fas fa-phone"></i>
-            </div>
-            <h3>Телефон</h3>
-            <p id="phone-text">+7 (384) 515-37-00</p>
-            <div class="copy-hint">
-                <i class="fas fa-copy"></i>
-                <span>Нажмите чтобы скопировать</span>
-            </div>
-        </div>
-        
-        <div class="contact-card" onclick="copyToClipboard('info@ytk-edu.ru', 'Email', this)">
-            <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-            </div>
-            <h3>Email</h3>
-            <p id="email-text">info@ytk-edu.ru</p>
-            <div class="copy-hint">
-                <i class="fas fa-copy"></i>
-                <span>Нажмите чтобы скопировать</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="map-container">
-        <iframe 
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3A0c7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b&source=constructor" 
-            width="100%" 
-            height="400" 
-            frameborder="0"
-            style="border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
-        </iframe>
-    </div>
-</section>
-
-<section id="resources" class="resources-section">
-    <h2>Полезные ресурсы</h2>
-    <div class="resources-grid">
-        <!-- Правовое просвещение педагогов -->
-        <a href="https://ytk.kemobl.ru/pedagogu/pravovoe-prosveshenie-pedagogov/" target="_blank" class="resource-card">
-            <div class="resource-icon">
-                <i class="fas fa-gavel"></i>
-            </div>
-            <h3>Правовое просвещение педагогов</h3>
-            <p class="resource-sub">информация для педагогов.</p>
-        </a>
-        
-        <!-- Министерство Образования Кузбасса -->
-        <a href="https://edu.ruobr.ru/" target="_blank" class="resource-card">
-            <div class="resource-icon">
-                <i class="fas fa-landmark"></i>
-            </div>
-            <h3>Министерство Образования Кузбасса</h3>
-            <p class="resource-sub">Официальный сайт министерства образования Кузбасса.</p>
-        </a>
-        
-        <!-- Администрация правительства Кузбасса -->
-        <a href="https://ako.ru/" target="_blank" class="resource-card">
-            <div class="resource-icon">
-                <i class="fas fa-building"></i>
-            </div>
-            <h3>Администрация правительства Кузбасса</h3>
-            <p class="resource-sub">Официальный сайт правительства Кузбасса.</p>
-        </a>
-        
-        <!-- Портал работа в России -->
-        <a href="https://trudvsem.ru/" target="_blank" class="resource-card">
-            <div class="resource-icon">
-                <i class="fas fa-briefcase"></i>
-            </div>
-            <h3>Портал работа в России</h3>
-            <p class="resource-sub">федеральная государственная информационная система Федеральной службы по труду и занятости.</p>
-        </a>
-        
-        <!-- Портал "Сферум" -->
-        <a href="https://sferum.ru/" target="_blank" class="resource-card">
-            <div class="resource-icon">
-                <i class="fas fa-comments"></i>
-            </div>
-            <h3>Портал "Сферум"</h3>
-            <p class="resource-sub">Безопасное пространство для учёбы и общения.</p>
-        </a>
-    </div>
-</section>
-
-<footer>
-    <div class="footer-content">
-        <div class="footer-logo">
-            <h3>ЮТК им. Павлючкова Г.А.</h3>
-            <p>Юргинский технологический колледж</p>
-        </div>
-        <div class="footer-contacts">
-            <p><i class="fas fa-map-marker-alt"></i> г. Юрга, ул. Заводская, 18</p>
-            <p><i class="fas fa-phone"></i> +7 (384) 515-37-00</p>
-            <p><i class="fas fa-envelope"></i> info@ytk-edu.ru</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 ЮТК им. Павлючкова Г.А. — Все права защищены (данный сайт создан "455" группой)</p>
-    </div>
-</footer>
-
-<script src="script.js"></script>
+  <footer>© 2026 Мой сайт</footer>
 </body>
 </html>
